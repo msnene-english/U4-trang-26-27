@@ -163,8 +163,16 @@
         if (nq.questionHTML) {
             let m = nq.questionHTML.match(/^<b>([\s\S]*?)<\/b>\s*(?:<br\s*\/?>\s*)+/i);
             if (m) {
-                nq.showTitle = m[1];
+                if (!nq.showTitle) nq.showTitle = m[1];
                 nq.questionHTML = nq.questionHTML.replace(/^<b>[\s\S]*?<\/b>\s*(?:<br\s*\/?>\s*)+/i, '');
+            }
+        }
+        
+        if (nq.originalSentenceHTML) {
+            let m = nq.originalSentenceHTML.match(/^<b>([\s\S]*?)<\/b>\s*(?:<br\s*\/?>\s*)+/i);
+            if (m) {
+                if (!nq.showTitle) nq.showTitle = m[1];
+                nq.originalSentenceHTML = nq.originalSentenceHTML.replace(/^<b>[\s\S]*?<\/b>\s*(?:<br\s*\/?>\s*)+/i, '');
             }
         }
         
