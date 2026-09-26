@@ -729,17 +729,7 @@
                       let normAns = normalize(ans.toLowerCase());
                       if (normAns === normVal) return true;
                       
-                      let parts = normAns.split(' ');
-                      let exactMissingPart = '';
-                      if (parts.length >= 2 && normAns) {
-                          let prefix = normalize(parts[0].replace(/^(->|\?|\u2019)\s*/, '').toLowerCase());
-                          let suffix = normalize(parts[parts.length - 1].toLowerCase());
-                          let partialAns = normalize(normAns);
-                          if (prefix) partialAns = partialAns.replace(new RegExp('^' + prefix.replace(/[.*+?^${}()|[\]\\\\]/g, '\\\\$&') + '\\\\s*'), '').trim();
-                          if (suffix) partialAns = partialAns.replace(new RegExp('\\\\s*' + suffix.replace(/[.*+?^${}()|[\]\\\\]/g, '\\\\$&') + '$'), '').trim();
-                          exactMissingPart = partialAns;
-                          if (partialAns && partialAns === normVal) return true;
-                      }
+                      /* partial matching removed to prevent antonym bugs */
                       return false;
                   });
                   
