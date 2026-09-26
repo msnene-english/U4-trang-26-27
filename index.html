@@ -495,11 +495,13 @@
                   }
                   
                   // Strip leading numbers from qText
-                  qText = qText.replace(/^\d+[\.\)]?\s*/, '');
+                  qText = qText.replace(/^(<b>.*?<\/b>\s*<br\s*\/?>\s*)\d+[\.\)]?\s*/i, '$1');
+                    qText = qText.replace(/^\d+[\.\)]?\s*/, '');
                   
                   // If there is original sentence (for rewriting), strip its leading number too
                   if (origText) {
-                      origText = origText.replace(/^\d+[\.\)]?\s*/, '');
+                      origText = origText.replace(/^(<b>.*?<\/b>\s*<br\s*\/?>\s*)\d+[\.\)]?\s*/i, '$1');
+                        origText = origText.replace(/^\d+[\.\)]?\s*/, '');
                   }
                   
                   // Now prepend sequential number
